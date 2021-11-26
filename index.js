@@ -94,6 +94,9 @@ function createTodoListItem(item){
     deleteButton.textContent = 'Delete';
     buttonContainer.append(editButton,deleteButton);
 
+    //Deletes a todo 
+    deleteButtonEvent(deleteButton,item);
+
     listItem.append(checkboxContainer,textContainer,buttonContainer);
     
     return listItem;
@@ -167,6 +170,18 @@ function changeDisplay(){
     }else{
         completedSection.append(completedSectionTitle,compeltedList);
     }
+}
+function deleteTodo(text){
+    const newTodoArray = state.todos.filter(function(todo){
+        return todo.text != text;
+    })
+     state.todos = newTodoArray;
+}
+function deleteButtonEvent(button,item){
+    button.addEventListener('click',function(){
+        deleteTodo(item.text);
+        render();
+    })
 }
 showCompletedCheckboxEvent();
 render();

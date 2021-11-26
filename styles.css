@@ -78,7 +78,9 @@ body {
     grid-template-rows: 1fr 1fr;
     grid-gap: 3px;
   }
-  
+  .button-section button{
+    cursor: pointer;
+  }
   .todo .completed-section,
   .todo .button-section {
     display: grid;
