@@ -86,4 +86,12 @@ body {
     display: grid;
     place-content: center;
   }
-  
+  .wrapper{
+    display: grid;
+    grid-auto-flow: column;
+    gap:15px;
+  }
+  .wrapper button{
+    justify-self: end;
+    cursor: pointer;
+  }

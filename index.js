@@ -97,6 +97,20 @@ function createTodoListItem(item){
     //Deletes a todo 
     deleteButtonEvent(deleteButton,item);
 
+    editButton.addEventListener('click',function(){
+        // listItem.innerHTML = '';
+       
+        // const input = createNewListItem(item);
+        // textContainer.removeChild();
+        const input = createNewListItem(item)
+        // input.setAttribute('class','text-input');
+        // textContainer.removeChild();
+       listItem.innerHTML = '';
+        listItem.append(input);
+        // render();
+        
+    })
+
     listItem.append(checkboxContainer,textContainer,buttonContainer);
     
     return listItem;
@@ -182,6 +196,30 @@ function deleteButtonEvent(button,item){
         deleteTodo(item.text);
         render();
     })
+}
+function editTodo(todo,title){
+    todo.text=title;
+}
+function createNewListItem(item){
+    const listItem = document.createElement('li');
+    listItem.setAttribute('class','todo');
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('class','wrapper');
+    const inputTitle = document.createElement('input');
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Add';
+    wrapper.append(inputTitle,addButton);
+    listItem.append(wrapper);
+
+
+    addButton.addEventListener('click',function(){
+        const inputValue = inputTitle.value;
+        editTodo(item,inputValue);
+        createTodoListItem(item);
+        render();
+    })
+    return listItem;
+    
 }
 showCompletedCheckboxEvent();
 render();
