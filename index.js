@@ -98,16 +98,10 @@ function createTodoListItem(item){
     deleteButtonEvent(deleteButton,item);
 
     editButton.addEventListener('click',function(){
-        // listItem.innerHTML = '';
-       
-        // const input = createNewListItem(item);
-        // textContainer.removeChild();
+     
         const input = createNewListItem(item)
-        // input.setAttribute('class','text-input');
-        // textContainer.removeChild();
        listItem.innerHTML = '';
         listItem.append(input);
-        // render();
         
     })
 
@@ -208,7 +202,10 @@ function createNewListItem(item){
     const inputTitle = document.createElement('input');
     const addButton = document.createElement('button');
     addButton.textContent = 'Add';
-    wrapper.append(inputTitle,addButton);
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+
+    wrapper.append(inputTitle,addButton,cancelButton);
     listItem.append(wrapper);
 
 
@@ -216,6 +213,10 @@ function createNewListItem(item){
         const inputValue = inputTitle.value;
         editTodo(item,inputValue);
         createTodoListItem(item);
+        render();
+    })
+    cancelButton.addEventListener('click',function(){
+        // createTodoListItem(item);
         render();
     })
     return listItem;
